@@ -1,0 +1,60 @@
+
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    line-height: 1.6;
+    color: #333;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    margin-top: 40px;
+}
+
+footer {
+    margin-top: 60px;
+    color: #777;
+}
+
+.projects {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.project-card {
+    width: 300px;
+    text-decoration: none;
+    color: black;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.project-card:hover {
+    transform: scale(1.03);
+}
+
+.project-card img {
+    width: 100%;
+    display: block;
+}
+
+.project-card h3,
+.project-card p {
+    padding: 15px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 8px;
+}
