@@ -52,13 +52,18 @@ p {
     padding: 10px 14px;
     border-right: 1px solid var(--black);
     background: var(--white);
-    text-align: left;
+    line-height: 28px;
+    text-align: right;
     text-decoration: none;
+    text-transform: uppercase;
 }
 
-.site-nav a:first-child,
-.sheet-cell:first-child {
-    border-left: 1px solid var(--black);
+.site-nav a {
+    text-align: left;
+}
+
+.site-nav a:last-child {
+    border-right: 0;
 }
 
 .site-nav a:hover,
@@ -78,6 +83,22 @@ main {
 
 .sheet-ribbon {
     margin: 0;
+    position: relative;
+}
+
+.sheet-ribbon::after {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    pointer-events: none;
+    content: "";
+    background-image:
+        linear-gradient(var(--black), var(--black)),
+        linear-gradient(var(--black), var(--black)),
+        linear-gradient(var(--black), var(--black));
+    background-position: 25% 0, 50% 0, 75% 0;
+    background-repeat: no-repeat;
+    background-size: 1px 100%;
 }
 
 .sheet-ribbon + .sheet-ribbon {
@@ -85,6 +106,10 @@ main {
 }
 
 .sheet-cell:last-child {
+    border-right: 0;
+}
+
+.sheet-cell {
     border-right: 0;
 }
 
@@ -112,71 +137,112 @@ main {
     min-height: 48px;
 }
 
+.ticker-ribbon::after {
+    display: none;
+}
+
+.ticker {
+    overflow: hidden;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.ticker-track {
+    display: inline-block;
+    min-width: 100%;
+    padding-left: 100%;
+    line-height: 48px;
+    text-align: left;
+    animation: ticker-crawl 12s linear infinite;
+}
+
+@keyframes ticker-crawl {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ticker-track {
+        padding-left: 14px;
+        animation: none;
+    }
+}
+
 .contact-form {
-    margin: 0;
+    margin: -1px 0 0;
 }
 
-.form-ribbon {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    border-bottom: 1px solid var(--black);
-}
-
-.form-ribbon label,
-.form-ribbon input,
-.form-ribbon textarea,
-.contact-form button {
+.contact-cell {
+    display: block;
+    width: 25%;
     min-height: 48px;
+    margin: 0;
     padding: 10px 14px;
     border: 0;
+    border-top: 1px solid var(--black);
+    border-right: 1px solid var(--black);
+    border-bottom: 1px solid var(--black);
     color: var(--black);
     background: var(--white);
     font: inherit;
+    line-height: 26px;
+    text-align: right;
+    text-transform: uppercase;
 }
 
-.form-ribbon label {
-    border-right: 1px solid var(--black);
+.contact-cell + .contact-cell {
+    margin-top: -1px;
 }
 
-.form-ribbon input,
-.form-ribbon textarea {
-    width: 100%;
-    resize: vertical;
+.contact-cell::placeholder {
+    color: #888;
+    opacity: 1;
 }
 
-.form-ribbon textarea {
-    min-height: 144px;
-}
-
-.contact-form button {
-    width: 25%;
-    border-right: 1px solid var(--black);
-    border-bottom: 1px solid var(--black);
-    cursor: pointer;
+input.contact-cell,
+textarea.contact-cell {
     text-align: left;
 }
 
-.contact-form button:hover:not(:disabled) {
+.contact-cell--message {
+    height: 48px;
+    max-width: 100%;
+    resize: both;
+}
+
+.contact-cell--send {
+    cursor: pointer;
+}
+
+.contact-cell--send:hover,
+.contact-cell--send:focus-visible {
     color: var(--white);
     background: var(--black);
 }
 
-.contact-form button:disabled {
-    cursor: not-allowed;
-    opacity: .55;
+.contact-cell:focus {
+    outline: 1px solid var(--black);
+    outline-offset: -1px;
 }
 
 @media (max-width: 600px) {
     .site-nav a,
-    .sheet-cell,
-    .form-ribbon label,
-    .form-ribbon input,
-    .form-ribbon textarea {
+    .sheet-cell {
         padding: 9px 7px;
+        line-height: 30px;
     }
 
     .site-nav {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .contact-cell {
+        width: 50%;
     }
 
     .site-nav a:nth-child(2) {
