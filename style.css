@@ -42,12 +42,14 @@ p {
 .sheet-ribbon {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: 48px;
     width: 100%;
     border-bottom: 1px solid var(--black);
 }
 
 .site-nav a,
 .sheet-cell {
+    height: 48px;
     min-height: 48px;
     padding: 10px 14px;
     border-right: 1px solid var(--black);
@@ -143,13 +145,16 @@ main {
 
 .ticker {
     overflow: hidden;
+    height: 48px;
     padding: 0;
+    line-height: 0;
     white-space: nowrap;
 }
 
 .ticker-track {
-    display: inline-block;
+    display: block;
     min-width: 100%;
+    height: 48px;
     padding-left: 100%;
     line-height: 48px;
     text-align: left;
@@ -239,6 +244,19 @@ textarea.contact-cell {
 
     .site-nav {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .sheet-ribbon {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .sheet-ribbon::after {
+        background-image: linear-gradient(var(--black), var(--black));
+        background-position: 50% 0;
+    }
+
+    .ticker-ribbon::after {
+        display: none;
     }
 
     .contact-cell {
