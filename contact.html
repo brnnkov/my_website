@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html">artem bronnikov</a>
+        <a href="projects.html">projects</a>
+        <a href="research.html">research</a>
+        <a href="contact.html" aria-current="page">contact</a>
+    </nav>
+
+    <main>
+        <form class="contact-form" action="#" method="post">
+            <div class="form-field">
+                <label for="name">name</label>
+                <input type="text" id="name" name="name" autocomplete="name" required>
+            </div>
+
+            <div class="form-field">
+                <label for="email">email</label>
+                <input type="email" id="email" name="email" autocomplete="email" required>
+            </div>
+
+            <div class="form-field">
+                <label for="message">message</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+
+            <button type="submit" disabled>send</button>
+        </form>
+    </main>
+</body>
+</html>
