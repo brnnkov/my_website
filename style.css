@@ -94,13 +94,22 @@ main {
     inset: 0;
     pointer-events: none;
     content: "";
-    background-image:
-        linear-gradient(var(--black), var(--black)),
-        linear-gradient(var(--black), var(--black)),
-        linear-gradient(var(--black), var(--black));
-    background-position: 25% 0, 50% 0, 75% 0;
-    background-repeat: no-repeat;
-    background-size: 1px 100%;
+    background-image: linear-gradient(
+        to right,
+        transparent 0,
+        transparent calc(25% - 1px),
+        var(--black) calc(25% - 1px),
+        var(--black) 25%,
+        transparent 25%,
+        transparent calc(50% - 1px),
+        var(--black) calc(50% - 1px),
+        var(--black) 50%,
+        transparent 50%,
+        transparent calc(75% - 1px),
+        var(--black) calc(75% - 1px),
+        var(--black) 75%,
+        transparent 75%
+    );
 }
 
 .sheet-ribbon + .sheet-ribbon {
@@ -143,12 +152,12 @@ main {
     display: none;
 }
 
-.ticker {
+.sheet-ribbon .ticker {
     overflow: hidden;
     height: 48px;
     padding: 0;
     color: var(--white);
-    background: var(--black);
+    background-color: var(--black);
     line-height: 0;
     white-space: nowrap;
 }
@@ -160,6 +169,7 @@ main {
     padding-left: 100%;
     line-height: 48px;
     text-align: left;
+    color: inherit;
     animation: ticker-crawl 12s linear infinite;
 }
 
@@ -253,15 +263,21 @@ textarea.contact-cell {
     }
 
     .sheet-ribbon::after {
-        background-image: linear-gradient(var(--black), var(--black));
-        background-position: 50% 0;
+        background-image: linear-gradient(
+            to right,
+            transparent 0,
+            transparent calc(50% - 1px),
+            var(--black) calc(50% - 1px),
+            var(--black) 50%,
+            transparent 50%
+        );
     }
 
     .ticker-ribbon::after {
         display: none;
     }
 
-    .ticker {
+    .sheet-ribbon .ticker {
         padding: 0;
         line-height: 0;
     }
