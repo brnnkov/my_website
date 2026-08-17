@@ -5,23 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>contact</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
 </head>
 
 <body>
+    <!-- Persistent site navigation; project and research groups expand in place. -->
     <nav class="site-nav" aria-label="Main navigation">
-        <a href="index.html">artem bronnikov</a>
-        <a href="projects.html">projects</a>
-        <a href="research.html">research</a>
+        <a class="site-title" href="index.html">artem bronnikov</a>
+        <details>
+            <summary>projects</summary>
+            <div class="nav-submenu">
+                <a href="project1.html">placeholder</a>
+            </div>
+        </details>
+        <details>
+            <summary>research</summary>
+            <div class="nav-submenu">
+                <!-- RESEARCH_NAV_START -->
+                <a href="research-rainbows.html">Rainbows</a>
+                <!-- RESEARCH_NAV_END -->
+            </div>
+        </details>
+        <a href="cv.html">cv</a>
         <a href="contact.html" aria-current="page">contact</a>
     </nav>
 
-    <main>
+    <!-- Visual contact form; add a form service endpoint before launch. -->
+    <main class="contact-page">
         <form class="contact-form" action="#" method="post">
-            <input class="contact-cell" type="text" id="name" name="name" placeholder="name" aria-label="Name" autocomplete="name" required>
-            <input class="contact-cell" type="email" id="email" name="email" placeholder="email" aria-label="Email" autocomplete="email" required>
-            <textarea class="contact-cell contact-cell--message" id="message" name="message" placeholder="message" aria-label="Message" required></textarea>
-            <button class="contact-cell contact-cell--send" type="submit">send</button>
+            <div class="contact-fields">
+                <input class="contact-cell" type="text" id="subject" name="subject" placeholder="subject" aria-label="Subject" required>
+                <input class="contact-cell" type="email" id="email" name="email" placeholder="email" aria-label="Email" autocomplete="email" required>
+                <textarea class="contact-cell contact-cell--message" id="message" name="message" placeholder="message" aria-label="Message" required></textarea>
+                <button class="contact-cell contact-cell--send" type="submit">send</button>
+            </div>
         </form>
     </main>
 </body>

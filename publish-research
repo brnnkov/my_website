@@ -1,4 +1,5 @@
 #!/bin/sh
+# Resolve this launcher's directory so it works from any current directory.
 set -eu
 
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)

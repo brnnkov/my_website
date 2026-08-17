@@ -1,6 +1,6 @@
 HOW TO MAKE THE CONTACT FORM SEND EMAIL
 
-The form is visual only right now. Its Send button is disabled.
+The form is visual only right now. Its action points to #, so it does not send email yet.
 
 One straightforward option for a static website is Formspree:
 
@@ -14,19 +14,15 @@ One straightforward option for a static website is Formspree:
    <form class="contact-form" action="#" method="post">
 7. Replace # with your unique endpoint. For example:
    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="post">
-8. Find the Send button:
-   <button type="submit" disabled>send</button>
-9. Remove the word disabled so it becomes:
-   <button type="submit">send</button>
-10. Save, publish the website, and send a test message.
-11. Check the Formspree dashboard and your receiving inbox. If prompted, confirm or configure the target email in Formspree.
+8. Save, publish the website, and send a test message.
+9. Check the Formspree dashboard and your receiving inbox. If prompted, confirm or configure the target email in Formspree.
 
 Important:
 
 - Use the unique form-ID endpoint, not an endpoint containing your email address. Email-address URLs are a deprecated legacy setup.
-- Do not place email account passwords or API secret keys in contact.html, script.js, or any other public website file.
+- Do not place email account passwords or API secret keys in contact.html or any other public website file.
 - Formspree can apply spam protection and usage limits. Review its current plan and settings before launch.
-- The existing name, email, and message fields already have the required name attributes, so they are ready for this setup.
+- The existing subject, email, and message fields already have the required name attributes, so they are ready for this setup.
 
 Official setup documentation:
 https://help.formspree.io/articles/building-your-form/building-an-html-form

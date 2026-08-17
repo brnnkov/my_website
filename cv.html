@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>research</title>
+    <title>cv</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- Persistent site navigation; managed research links sit between the markers. -->
+    <!-- Persistent site navigation; project and research groups expand in place. -->
     <nav class="site-nav" aria-label="Main navigation">
         <a class="site-title" href="index.html">artem bronnikov</a>
         <details>
@@ -17,28 +17,19 @@
                 <a href="project1.html">placeholder</a>
             </div>
         </details>
-        <details open>
-            <summary aria-current="page">research</summary>
+        <details>
+            <summary>research</summary>
             <div class="nav-submenu">
                 <!-- RESEARCH_NAV_START -->
                 <a href="research-rainbows.html">Rainbows</a>
                 <!-- RESEARCH_NAV_END -->
             </div>
         </details>
-        <a href="cv.html">cv</a>
+        <a href="cv.html" aria-current="page">cv</a>
         <a href="contact.html">contact</a>
     </nav>
 
-    <!-- Index updated automatically by tools/publish_research.py. -->
-    <main>
-        <section class="page-section" aria-labelledby="research-heading">
-            <h1 id="research-heading">research</h1>
-            <div class="research-list">
-                <!-- RESEARCH_PROJECTS_START -->
-                <a href="research-rainbows.html" class="research-project-link">Rainbows</a>
-                <!-- RESEARCH_PROJECTS_END -->
-            </div>
-        </section>
-    </main>
+    <!-- CV content will be added here later. -->
+    <main></main>
 </body>
 </html>

@@ -1,20 +1,22 @@
+/* ---------- Design tokens and global defaults ---------- */
+
 :root {
-    --black: #000;
-    --white: #fff;
+    --ink: #000;
+    --paper: #fff;
+    --visited: #551a8b;
+    --sidebar-width: 170px;
 }
 
 * {
     box-sizing: border-box;
-    border-radius: 0;
-    box-shadow: none;
 }
 
 html,
 body {
     min-height: 100%;
     margin: 0;
-    color: var(--black);
-    background: var(--white);
+    color: var(--ink);
+    background: var(--paper);
 }
 
 body,
@@ -31,184 +33,229 @@ a {
 }
 
 h1,
-h2,
 p {
-    margin: 0;
-    font-size: inherit;
-    font-weight: normal;
+    margin-top: 0;
 }
 
-.site-nav,
-.sheet-ribbon {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-auto-rows: 48px;
-    width: 100%;
-    border-bottom: 1px solid var(--black);
+h1 {
+    margin-bottom: 48px;
+    font-size: clamp(2.4rem, 6vw, 5.5rem);
+    line-height: 0.95;
+}
+
+/* ---------- Fixed left navigation ---------- */
+
+.site-nav {
+    position: fixed;
+    z-index: 10;
+    inset: 0 auto 0 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    padding: 14px 12px;
+    overflow-y: auto;
+    background: var(--paper);
 }
 
 .site-nav a,
-.sheet-cell {
-    height: 48px;
-    min-height: 48px;
-    padding: 10px 14px;
-    border-right: 1px solid var(--black);
-    background: var(--white);
-    line-height: 28px;
-    text-align: right;
+.site-nav summary {
+    display: block;
+    width: fit-content;
+    padding: 3px 0;
+    color: var(--ink);
+    cursor: pointer;
+    font-size: 0.86rem;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+/* Keep the conventional browser cue for links the visitor has opened. */
+a:visited {
+    color: var(--visited);
+}
+
+.site-nav > a,
+.site-nav > details > summary,
+.nav-submenu a {
+    text-transform: uppercase;
+}
+
+.site-title {
+    margin-bottom: 16px;
+}
+
+.site-nav details {
+    margin: 0;
+}
+
+.site-nav summary {
+    list-style: none;
+}
+
+.site-nav summary::-webkit-details-marker {
+    display: none;
+}
+
+.nav-submenu {
+    margin: 1px 0 7px;
+    padding-left: 8px;
+}
+
+.nav-submenu a {
+    line-height: 1.35;
+}
+
+.site-nav a:hover,
+.site-nav summary:hover {
+    text-decoration: none;
+}
+
+.site-nav a:focus-visible,
+.site-nav summary:focus-visible {
+    outline: 1px dotted var(--ink);
+    outline-offset: 2px;
+}
+
+/* ---------- Shared page canvas and index pages ---------- */
+
+main {
+    width: calc(100% - var(--sidebar-width));
+    min-height: 100vh;
+    margin-left: var(--sidebar-width);
+    padding: 24px 32px 64px;
+}
+
+.page-section {
+    max-width: 1100px;
+}
+
+.project-list,
+.research-list {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.project-list a,
+.research-list > a {
+    font-size: clamp(1.5rem, 3vw, 3rem);
+    font-weight: 400;
     text-decoration: none;
     text-transform: uppercase;
 }
 
-.site-nav a {
+/* ---------- Placeholder design project ---------- */
+
+.placeholder-project {
+    display: flex;
+    min-height: calc(100vh - 48px);
+    align-items: center;
+    justify-content: center;
+}
+
+.placeholder-project header {
+    width: min(100%, 560px);
+    text-align: center;
+}
+
+.placeholder-project #project-heading {
+    margin: 0 0 18px;
+    font-size: 0.86rem;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.placeholder-project p {
+    margin: 0;
+    line-height: 1.5;
     text-align: left;
 }
 
-.site-nav a:last-child {
-    border-right: 0;
+/* ---------- Published Obsidian research pages ---------- */
+
+.published-research {
+    width: min(100%, 720px);
+    margin: 0 auto;
+    padding: clamp(80px, 18vh, 180px) 0 64px;
 }
 
-.site-nav a:hover,
-.site-nav a:focus-visible,
-.site-nav a[aria-current="page"],
-a.sheet-cell:hover,
-a.sheet-cell:focus-visible {
-    color: var(--white);
-    background: var(--black);
-    outline: none;
+.published-research-header {
+    text-align: center;
 }
 
-main {
+.published-research #research-project-heading {
+    margin: 0 0 18px;
+    font-size: 0.86rem;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.research-note {
     width: 100%;
-    padding: 0 0 48px;
+    max-width: 720px;
+    font-size: 0.86rem;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: left;
 }
 
-.sheet-ribbon {
+/* Numbered table of contents generated from Markdown headings. */
+.research-toc {
+    width: fit-content;
+    min-width: 240px;
+    margin: 0 0 42px;
+    padding: 12px 16px;
+    border: 1px solid var(--ink);
+    font-size: inherit;
+    font-weight: 400;
+    line-height: inherit;
+}
+
+.research-toc #research-toc-heading {
+    margin: 0 0 6px;
+    font-size: inherit;
+    font-weight: 400;
+    text-align: center;
+}
+
+.research-toc ol {
     margin: 0;
-    position: relative;
-}
-
-.sheet-ribbon::after {
-    position: absolute;
-    z-index: 1;
-    inset: 0;
-    pointer-events: none;
-    content: "";
-    background-image: linear-gradient(
-        to right,
-        transparent 0,
-        transparent calc(25% - 1px),
-        var(--black) calc(25% - 1px),
-        var(--black) 25%,
-        transparent 25%,
-        transparent calc(50% - 1px),
-        var(--black) calc(50% - 1px),
-        var(--black) 50%,
-        transparent 50%,
-        transparent calc(75% - 1px),
-        var(--black) calc(75% - 1px),
-        var(--black) 75%,
-        transparent 75%
-    );
-}
-
-.sheet-ribbon + .sheet-ribbon {
-    border-top: 0;
-}
-
-.sheet-cell:last-child {
-    border-right: 0;
-}
-
-.sheet-cell {
-    border-right: 0;
-}
-
-.sheet-cell--wide {
-    grid-column: 1 / -1;
-}
-
-.sheet-cell--wide:first-child {
-    border-left: 0;
-}
-
-.sheet-cell--media {
-    min-height: 0;
     padding: 0;
+    list-style: none;
 }
 
-.sheet-cell--media img {
-    display: block;
-    width: 100%;
-    height: auto;
+.research-toc li {
     margin: 0;
 }
 
-.sheet-cell--empty {
-    min-height: 48px;
+.research-toc li[class$="-2"] { padding-left: 14px; }
+.research-toc li[class$="-3"] { padding-left: 28px; }
+.research-toc li[class$="-4"] { padding-left: 42px; }
+.research-toc li[class$="-5"] { padding-left: 56px; }
+.research-toc li[class$="-6"] { padding-left: 70px; }
+
+.research-toc a {
+    font-size: inherit;
+    font-weight: 400;
+    text-decoration: none;
 }
 
-#research-project-heading {
-    text-align: left;
-}
-
-.research-note > :not(.research-section),
-.research-section-content > :not(.research-section) {
-    margin: 0;
-    padding: 10px 14px;
-    background-color: var(--white);
-    line-height: 28px;
-    text-align: left;
-    text-transform: none;
-}
-
-.research-note hr {
-    display: none;
-}
-
+/* Expanded-by-default sections generated from each Markdown heading. */
 .research-section {
-    --section-height: 48px;
-    --section-line-height: 28px;
-    --section-padding-y: 10px;
-    margin: 0;
-}
-
-.research-section--level-2 {
-    --section-height: 40px;
-    --section-padding-y: 6px;
-}
-
-.research-section--level-3,
-.research-section--level-4,
-.research-section--level-5,
-.research-section--level-6 {
-    --section-height: 32px;
-    --section-padding-y: 2px;
+    margin: 24px 0 0;
 }
 
 .research-section summary {
-    position: relative;
-    height: var(--section-height);
-    border-bottom: 1px solid var(--black);
+    display: flex;
+    width: 100%;
+    align-items: baseline;
     cursor: pointer;
+    font-size: inherit;
+    font-weight: 400;
+    line-height: inherit;
     list-style: none;
-    background-color: var(--white);
-    background-image: linear-gradient(
-        to right,
-        transparent 0,
-        transparent calc(25% - 1px),
-        var(--black) calc(25% - 1px),
-        var(--black) 25%,
-        transparent 25%,
-        transparent calc(50% - 1px),
-        var(--black) calc(50% - 1px),
-        var(--black) 50%,
-        transparent 50%,
-        transparent calc(75% - 1px),
-        var(--black) calc(75% - 1px),
-        var(--black) 75%,
-        transparent 75%
-    );
 }
 
 .research-section summary::-webkit-details-marker {
@@ -219,73 +266,65 @@ main {
     content: "";
 }
 
-.research-section summary span {
-    display: block;
-    width: 25%;
-    height: var(--section-height);
-    padding: var(--section-padding-y) 14px;
-    line-height: var(--section-line-height);
-    text-align: right;
-    text-transform: uppercase;
+.research-section summary::after {
+    margin-left: auto;
+    padding-left: 18px;
+    content: "[collapse]";
+    white-space: nowrap;
 }
 
-.research-section--level-2 summary span,
-.research-section--level-3 summary span,
-.research-section--level-4 summary span,
-.research-section--level-5 summary span,
-.research-section--level-6 summary span {
-    margin-left: 25%;
+.research-section:not([open]) > summary::after {
+    content: "[expand]";
 }
 
-.research-section summary:hover,
-.research-section summary:focus-visible,
-.research-section[open] > summary {
-    color: var(--white);
-    background-color: var(--black);
-    outline: none;
+.research-section--level-3 > summary > .research-section-label {
+    text-decoration: underline;
+    text-underline-offset: 2px;
 }
 
 .research-section-content {
-    margin: 0;
+    padding: 4px 0 0;
 }
 
-.research-section[open] > .research-section-content {
-    box-shadow: inset 0 -1px 0 var(--black);
+.research-section-content > hr:first-child {
+    margin: 0 0 10px;
+    border: 0;
+    border-top: 1px solid var(--ink);
 }
 
+.research-section .research-section {
+    margin-top: 24px;
+}
+
+/* Standard Markdown elements inside a published note. */
 .research-note ul,
-.research-note ol,
-.research-note .research-section-content > ul,
-.research-note .research-section-content > ol {
-    margin: 0;
-    padding: 10px 14px 10px 52px;
-    list-style-position: outside;
+.research-note ol {
+    padding-left: 28px;
 }
 
 .research-note li {
-    margin: 0;
-    padding-left: 4px;
-    line-height: 28px;
+    margin-bottom: 6px;
 }
 
-.research-note li + li {
-    margin-top: 4px;
-}
-
-.research-note li > ul,
-.research-note li > ol {
-    padding: 4px 0 0 24px;
-}
-
-.research-note img {
+.research-note img,
+.research-note embed {
     display: block;
     max-width: 100%;
     height: auto;
-    margin-left: auto;
 }
 
-.research-note blockquote {
-    margin: 0;
+.research-note embed {
+    width: 100%;
+    min-height: 60vh;
+}
+
+/* Keep Instagram's loading block and rendered post compact and centered. */
+.research-note .instagram-media {
+    display: block !important;
+    width: min(100%, 420px) !important;
+    min-width: 0 !important;
+    max-width: 420px !important;
+    margin: 24px auto !important;
 }
 
 .research-note pre {
@@ -293,25 +332,29 @@ main {
     white-space: pre-wrap;
 }
 
-.research-note table,
-.research-section-content > table {
-    width: 100%;
-    padding: 0;
+.research-note table {
+    width: auto;
+    max-width: 100%;
+    margin: 28px 0;
+    border: 1px solid var(--ink);
     border-collapse: collapse;
-    table-layout: fixed;
-    text-align: left;
+    table-layout: auto;
+    font-size: inherit;
+    font-weight: 400;
+    line-height: inherit;
 }
 
 .research-note th,
 .research-note td {
-    height: 48px;
-    padding: 10px 14px;
-    border-right: 1px solid var(--black);
-    border-bottom: 1px solid var(--black);
-    font-weight: normal;
-    line-height: 28px;
+    padding: 6px 10px;
+    border-right: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
     text-align: left;
     vertical-align: top;
+}
+
+.research-note th {
+    font-weight: 400;
 }
 
 .research-note th:last-child,
@@ -319,260 +362,82 @@ main {
     border-right: 0;
 }
 
-.research-note thead th {
-    border-top: 1px solid var(--black);
-    text-align: center;
-    text-transform: uppercase;
-    vertical-align: middle;
+.research-note tbody tr:last-child td {
+    border-bottom: 0;
 }
 
-.research-note .research-table-spacer {
-    width: 100%;
-    height: 48px;
-    padding: 0;
-    border-bottom: 1px solid var(--black);
-}
+/* ---------- Contact form ---------- */
 
-
-.ticker-ribbon::after {
-    display: none;
-}
-
-.sheet-ribbon .ticker {
-    overflow: hidden;
-    height: 48px;
-    padding: 0;
-    color: var(--white);
-    background-color: var(--black);
-    line-height: 0;
-    white-space: nowrap;
-}
-
-.ticker-track {
-    display: block;
-    min-width: 100%;
-    height: 48px;
-    padding-left: 100%;
-    line-height: 48px;
-    text-align: left;
-    color: inherit;
-    animation: ticker-crawl 12s linear infinite;
-}
-
-@keyframes ticker-crawl {
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(-100%);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .ticker-track {
-        padding-left: 14px;
-        animation: none;
-    }
+.contact-page {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
 }
 
 .contact-form {
-    margin: -1px 0 0;
+    width: min(100%, 520px);
+}
+
+.contact-fields {
+    padding: 16px;
+    border: 1px solid var(--ink);
 }
 
 .contact-cell {
     display: block;
-    width: 25%;
-    min-height: 48px;
-    margin: 0;
-    padding: 10px 14px;
+    width: 100%;
+    margin: 0 0 24px;
+    padding: 8px 0;
     border: 0;
-    border-top: 1px solid var(--black);
-    border-right: 1px solid var(--black);
-    border-bottom: 1px solid var(--black);
-    color: var(--black);
-    background: var(--white);
-    font: inherit;
-    line-height: 26px;
-    text-align: right;
-    text-transform: uppercase;
-}
-
-.contact-cell + .contact-cell {
-    margin-top: -1px;
+    border-bottom: 1px solid var(--ink);
+    border-radius: 0;
+    color: var(--ink);
+    background: transparent;
+    font-family: inherit;
+    font-size: 0.86rem;
+    font-weight: 400;
 }
 
 .contact-cell::placeholder {
-    color: #888;
+    color: var(--ink);
     opacity: 1;
+    text-transform: uppercase;
 }
 
-input.contact-cell,
-textarea.contact-cell {
-    text-align: left;
+.contact-cell:focus-visible {
+    outline: 1px dotted var(--ink);
+    outline-offset: 2px;
 }
 
 .contact-cell--message {
-    height: 48px;
-    max-width: 100%;
-    resize: both;
+    margin-bottom: 0;
+    min-height: 160px;
+    resize: vertical;
 }
 
 .contact-cell--send {
+    width: auto;
+    margin: 18px 0 0 auto;
+    padding: 0;
+    border: 0;
     cursor: pointer;
+    text-transform: uppercase;
 }
 
-.contact-cell--send:hover,
-.contact-cell--send:focus-visible {
-    color: var(--white);
-    background: var(--black);
-}
+/* ---------- Narrow screens ---------- */
 
-.contact-cell:focus {
-    outline: 1px solid var(--black);
-    outline-offset: -1px;
-}
-
-@media (max-width: 600px) {
-    .site-nav a,
-    .sheet-cell {
-        padding: 9px 7px;
-        line-height: 30px;
+@media (max-width: 700px) {
+    :root {
+        --sidebar-width: 120px;
     }
 
     .site-nav {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding: 12px 8px;
     }
 
-    .sheet-ribbon {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    main {
+        padding: 18px 16px 48px;
     }
 
-    .sheet-ribbon::after {
-        background-image: linear-gradient(
-            to right,
-            transparent 0,
-            transparent calc(50% - 1px),
-            var(--black) calc(50% - 1px),
-            var(--black) 50%,
-            transparent 50%
-        );
-    }
-
-    .ticker-ribbon::after {
-        display: none;
-    }
-
-    .research-section summary {
-        background-image: linear-gradient(
-            to right,
-            transparent 0,
-            transparent calc(50% - 1px),
-            var(--black) calc(50% - 1px),
-            var(--black) 50%,
-            transparent 50%
-        );
-    }
-
-    .research-note ul,
-    .research-note ol,
-    .research-note .research-section-content > ul,
-    .research-note .research-section-content > ol {
-        padding-left: 44px;
-    }
-
-    .research-section summary span {
-        width: 50%;
-        padding: var(--section-padding-y) 7px;
-        line-height: var(--section-line-height);
-    }
-
-    .research-section--level-2 summary span,
-    .research-section--level-3 summary span,
-    .research-section--level-4 summary span,
-    .research-section--level-5 summary span,
-    .research-section--level-6 summary span {
-        margin-left: 50%;
-    }
-
-    .sheet-ribbon .ticker {
-        padding: 0;
-        line-height: 0;
-    }
-
-    .contact-cell {
-        width: 50%;
-    }
-
-    .site-nav a:nth-child(2) {
-        border-right: 0;
-    }
-
-    .site-nav a:nth-child(-n + 2) {
-        border-bottom: 1px solid var(--black);
-    }
-}
-
-.map-embed {
-    display: block;
-    width: 100%;
-    height: 70vh;
-    min-height: 480px;
-    padding: 0;
-    border: 0;
-    background: var(--white);
-}
-
-/* Map inside an Obsidian research section */
-.research-note .map-embed--research {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    border-bottom: 1px solid var(--black);
-    text-transform: none;
-}
-
-/* design-project map */
-.design-map-layout {
-    display: grid;
-    grid-template-columns: 25% 75%;
-    width: 100%;
-    border-bottom: 1px solid var(--black);
-}
-
-.design-map-details {
-    padding: 10px 14px;
-    border-right: 1px solid var(--black);
-}
-
-.design-map-layout .map-embed {
-    height: calc(100vh - 96px);
-}
-
-/* Independent map */
-.map-embed--standalone {
-    height: calc(100dvh - 96px);
-    min-height: 0;
-    border-bottom: 1px solid var(--black);
-}
-
-@media (max-width: 600px) {
-    .map-embed {
-        height: 60vh;
-        min-height: 360px;
-    }
-    .design-map-layout {
-        grid-template-columns: 1fr;
-    }
-    .design-map-details {
-        border-right: 0;
-        border-bottom: 1px solid var(--black);
-    }
-    .design-map-layout .map-embed {
-        height: 65vh;
-    }
-    .map-embed--standalone {
-        height: calc(100dvh - 144px);
-        min-height: 0;
-    }
 }

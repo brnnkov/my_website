@@ -8,40 +8,36 @@
 </head>
 
 <body>
+    <!-- Persistent site navigation; project and research groups expand in place. -->
+    <nav class="site-nav" aria-label="Main navigation">
+        <a class="site-title" href="index.html">artem bronnikov</a>
+        <details open>
+            <summary aria-current="page">projects</summary>
+            <div class="nav-submenu">
+                <a href="project1.html" aria-current="page">placeholder</a>
+            </div>
+        </details>
+        <details>
+            <summary>research</summary>
+            <div class="nav-submenu">
+                <!-- RESEARCH_NAV_START -->
+                <a href="research-rainbows.html">Rainbows</a>
+                <!-- RESEARCH_NAV_END -->
+            </div>
+        </details>
+        <a href="cv.html">cv</a>
+        <a href="contact.html">contact</a>
+    </nav>
 
-<nav class="site-nav" aria-label="Main navigation">
-    <a href="index.html">artem bronnikov</a>
-    <a href="projects.html" aria-current="page">projects</a>
-    <a href="research.html">research</a>
-    <a href="contact.html">contact</a>
-</nav>
-
-<main>
-    <article aria-labelledby="project-heading">
-        <div class="sheet-ribbon">
-            <h1 class="sheet-cell" id="project-heading">placeholder</h1>
-        </div>
-        <div class="sheet-ribbon">
-            <p class="sheet-cell sheet-cell--wide">placeholder text</p>
-        </div>
-
-        <section class="design-map-layout">
-          <div class="design-map-details">
-               <p>
-                 Project description, date
-                </p>
-         </div>
-
-         <iframe
-             class="map-embed"
-             src="PASTE_ARCGIS_URL"
-             title="Interactive project map"
-             loading="lazy"
-             allow="geolocation">
-         </iframe>
-        </section>
-   </article>
-</main>
+    <!-- Centered placeholder project title and left-aligned description. -->
+    <main>
+        <article class="placeholder-project" aria-labelledby="project-heading">
+            <header>
+                <h1 id="project-heading">placeholder</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae justo sed erat fermentum luctus. Praesent commodo, neque at volutpat feugiat, nibh lorem tincidunt augue, vitae consequat sapien orci sed urna.</p>
+            </header>
+        </article>
+    </main>
 
 </body>
 </html>

@@ -8,24 +8,29 @@
 </head>
 
 <body>
-
+    <!-- Persistent site navigation; project and research groups expand in place. -->
     <nav class="site-nav" aria-label="Main navigation">
-        <a href="index.html" aria-current="page">artem bronnikov</a>
-        <a href="projects.html">projects</a>
-        <a href="research.html">research</a>
+        <a class="site-title" href="index.html" aria-current="page">artem bronnikov</a>
+        <details>
+            <summary>projects</summary>
+            <div class="nav-submenu">
+                <a href="project1.html">placeholder</a>
+            </div>
+        </details>
+        <details>
+            <summary>research</summary>
+            <div class="nav-submenu">
+                <!-- RESEARCH_NAV_START -->
+                <a href="research-rainbows.html">Rainbows</a>
+                <!-- RESEARCH_NAV_END -->
+            </div>
+        </details>
+        <a href="cv.html">cv</a>
         <a href="contact.html">contact</a>
     </nav>
 
-    <main>
-        <section aria-labelledby="about-heading">
-            
-            <div class="sheet-ribbon ticker-ribbon">
-                <p class="sheet-cell sheet-cell--wide ticker">
-                    <span class="ticker-track">a global phenomenon</span>
-                </p>
-            </div>
-        </section>
-    </main>
+    <!-- The home canvas is intentionally empty. -->
+    <main></main>
 
 </body>
 </html>

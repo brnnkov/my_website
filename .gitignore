@@ -1,0 +1,6 @@
+# Local Python bytecode generated while running the research publisher.
+__pycache__/
+*.py[cod]
+
+# Finder metadata is local to macOS and should not be published.
+.DS_Store

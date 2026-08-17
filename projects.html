@@ -8,17 +8,33 @@
 </head>
 
 <body>
+    <!-- Persistent site navigation; project and research groups expand in place. -->
     <nav class="site-nav" aria-label="Main navigation">
-        <a href="index.html">artem bronnikov</a>
-        <a href="projects.html" aria-current="page">projects</a>
-        <a href="research.html">research</a>
+        <a class="site-title" href="index.html">artem bronnikov</a>
+        <details open>
+            <summary aria-current="page">projects</summary>
+            <div class="nav-submenu">
+                <a href="project1.html">placeholder</a>
+            </div>
+        </details>
+        <details>
+            <summary>research</summary>
+            <div class="nav-submenu">
+                <!-- RESEARCH_NAV_START -->
+                <a href="research-rainbows.html">Rainbows</a>
+                <!-- RESEARCH_NAV_END -->
+            </div>
+        </details>
+        <a href="cv.html">cv</a>
         <a href="contact.html">contact</a>
     </nav>
 
+    <!-- Index of published design projects. -->
     <main>
-        <section aria-label="Projects">
-            <div class="sheet-ribbon">
-                <a href="project1.html" class="sheet-cell">Placeholder</a>
+        <section class="page-section" aria-labelledby="projects-heading">
+            <h1 id="projects-heading">projects</h1>
+            <div class="project-list">
+                <a href="project1.html">placeholder</a>
             </div>
         </section>
     </main>
